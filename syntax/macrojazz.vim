@@ -9,3 +9,4 @@ syntax match macrojazzNumber "\v<0o\o+>"
 syntax match macrojazzNumber "\v<0b[01]+>"
 
 highlight default link MacroJazzKeywords Keyword
+highlight default link macrojazzNumber   Number
