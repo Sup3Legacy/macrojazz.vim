@@ -1,0 +1,1 @@
+# macrojazz.vim
