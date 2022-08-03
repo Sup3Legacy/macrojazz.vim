@@ -1,7 +1,16 @@
 syntax keyword MacroJazzKeywords
+    \ node
+
+syntax keyword macrojazzCond
     \ if 
     \ else 
-    \ node
+
+syntax keyword macrojazzBoolean
+    \ true 
+    \ false
+
+syntax match macrojazzDelimiter
+    \ "\%(_\|(\|)\|{\|}\|\[\|\]\)"
 
 syntax match macrojazzComment
     \ "//.*$"
@@ -13,7 +22,19 @@ syntax match macrojazzOperator
     \ "\%(+\|-\|*\|/\ze[^/]\|%\|~\|&\|>\|<\|%\|\.\|=\)"
 
 syntax match macrojazzSType
-    \ ":\s*\%({\s*\(int\|bool\)\s*\(:\s*[^$]*\)\?}\|int\|bool\)"
+    \ "\(:\s*\)\@<=\%({\s*\(int\|bool\)\s*\(:\s*[^$]*\)\?}\|int\|bool\)"
+
+syntax match macrojazzRType
+    \ "\(:\s*\)\@<=\[[^:]*\]\(,\|)\s*\(->\|{\)\)\@="
+
+syntax match macrojazzBuiltin
+    \ "@\h\+"
+
+syntax match macrojazzNodeName
+    \ "\(node\s*\)\@<=\zs\h*"
+
+syntax match macrojazzNodeCall
+    \ "\h\+\((\)\@="
 
 syntax match macrojazzNumber "\v<\d+>"
 syntax match macrojazzNumber "\v<0x\x+>"
@@ -24,8 +45,15 @@ highlight default link MacroJazzKeywords   Keyword
 highlight default link macrojazzNumber     Number
 highlight default link macrojazzOperator   Operator
 highlight default link macrojazzSType      Type
+highlight default link macrojazzRType      Type
 highlight default link macrojazzComment    Comment
 highlight default link macrojazzDocComment Comment
+highlight default link macrojazzBuiltin    Function
+highlight default link macrojazzNodeName   Function
+highlight default link macrojazzNodeCall   Function
+highlight default link macrojazzBoolean    Boolean
+highlight default link macrojazzCond       Conditional
+highlight default link macrojazzDelimiter  Delimiter
 
 if !exists("b:current_syntax")
     let b:current_syntax = "macrojazz"
