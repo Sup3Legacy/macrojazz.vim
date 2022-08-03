@@ -19,7 +19,7 @@ syntax match macrojazzDocComment
     \ "///.*$"
 
 syntax match macrojazzOperator
-    \ "\%(+\|-\|*\|/\ze[^/]\|%\|~\|&\|>\|<\|%\|\.\|=\)"
+    \ "\%(+\|-\|*\|/\ze[^/]\|%\|~\|&\|>\|<\|%\|\.\|=\||\)"
 
 syntax match macrojazzSType
     \ "\(:\s*\)\@<=[^\(,\|>(\)]*\(,\|\s*>\s*(\)\@="
@@ -27,14 +27,11 @@ syntax match macrojazzSType
 syntax match macrojazzRType
     \ "\(:\s*\)\@<=[^:,]*\(,\|)\s*\(->\|{\)\)\@="
 
-syntax match macrojazzBuiltin
-    \ "@\h\+"
-
 syntax match macrojazzNodeName
     \ "\(node\s*\)\@<=\zs\h*"
 
 syntax match macrojazzNodeCall
-    \ "\h\+\((\)\@="
+    \ "@\=\h\+\((\)\@="
 
 syntax match macrojazzNumber "\v<\d+>"
 syntax match macrojazzNumber "\v<0x\x+>"
@@ -48,7 +45,6 @@ highlight default link macrojazzSType      Type
 highlight default link macrojazzRType      Type
 highlight default link macrojazzComment    Comment
 highlight default link macrojazzDocComment Comment
-highlight default link macrojazzBuiltin    Function
 highlight default link macrojazzNodeName   Function
 highlight default link macrojazzNodeCall   Function
 highlight default link macrojazzBoolean    Boolean
