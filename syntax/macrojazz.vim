@@ -22,10 +22,10 @@ syntax match macrojazzOperator
     \ "\%(+\|-\|*\|/\ze[^/]\|%\|~\|&\|>\|<\|%\|\.\|=\)"
 
 syntax match macrojazzSType
-    \ "\(:\s*\)\@<=\%({\s*\(int\|bool\)\s*\(:\s*[^$]*\)\?}\|int\|bool\)"
+    \ "\(:\s*\)\@<=[^\(,\|>(\)]*\(,\|\s*>\s*(\)\@="
 
 syntax match macrojazzRType
-    \ "\(:\s*\)\@<=\[[^:]*\]\(,\|)\s*\(->\|{\)\)\@="
+    \ "\(:\s*\)\@<=[^:,]*\(,\|)\s*\(->\|{\)\)\@="
 
 syntax match macrojazzBuiltin
     \ "@\h\+"
